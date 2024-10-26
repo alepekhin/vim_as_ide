@@ -1,0 +1,114 @@
+cscope 15 $HOME/Github/vim_as_ide               0000000550
+	@src/main/java/demo/package1/A.java
+
+1 
+∑ckage
+ 
+	gdemo
+.
+	g∑ckage1
+;
+
+3 
+imp‹t
+ 
+	gdemo
+.
+	g∑ckage2
+.
+	gB
+;
+
+5 
+public
+ cœs†
+	cA
+ {
+
+7 
+public
+ 
+	$a1
+() {
+
+8 
+Sy°em
+.
+out
+.
+	`¥öén
+("methodá1 called");
+
+9 
+√w
+ 
+	`B
+().
+	`b1
+();
+
+12 
+public
+ 
+	$maö
+(
+Såög
+[] 
+¨gs
+) {
+
+13 
+√w
+ 
+	`A
+().
+	`a1
+();
+
+14 
+	}
+}
+
+	@src/main/java/demo/package2/B.java
+
+1 
+∑ckage
+ 
+	gdemo
+.
+	g∑ckage2
+;
+
+6 
+public
+ cœs†
+	cB
+ {
+
+11 
+public
+ 
+	$b1
+() {
+
+12 
+Sy°em
+.
+out
+.
+	`¥öén
+("method b1 called");
+
+14 
+	}
+}
+
+	@
+1
+.
+1
+/usr/include
+2
+70
+src/main/java/demo/package1/A.java
+src/main/java/demo/package2/B.java
