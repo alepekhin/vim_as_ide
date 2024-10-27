@@ -19,17 +19,17 @@ Vim IDE based on YouCompleteMe, cscope, lsp
  cscope -b
  vim .
 ```
-## Features of YouCompleteMe
-- code completion - `Ctrl-space`
-- class and methods docs - keep cursor on name
-- find definition 
+## Features
+- show code completion - `Ctrl-space`
+- show class and methods docs - keep cursor on name
+- find word, definition or open file 
 ```
 yank word and then
 Ctrl-\ s|g|f - s=search, g=global, f=file
 or
 :sc find s|g|f word
 ```
-- refactoring - `:YcmCompleter RefactorName new_name`
+- do refactoring - `:YcmCompleter RefactorName new_name`
 - improve code `:YcmCompleter FixIt`
 - format code `:YcmCompleter Format`
 - debugging
@@ -38,5 +38,4 @@ or
 # gradle build
 # jdb -sourcepath src/main/java -classpath build/classes/java/main demo.package1.A
 ```
-## Features of lsp for groovy code
-- not investigated
+- Features of lsp for groovy code - not investigated
