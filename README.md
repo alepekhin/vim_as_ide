@@ -15,7 +15,7 @@ Vim IDE based on YouCompleteMe and cscope
 ```
  find . -name "*.java" > cscope.files
  cscope -b
- vi .
+ vim .
 ```
 ## Features
 - code completion - `Ctrl-space`
