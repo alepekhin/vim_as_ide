@@ -23,7 +23,6 @@ Vim IDE based on YouCompleteMe and cscope
 - find definition 
 ```
 yank word and then
-```
 Ctrl-\ s|g|f - s=search, g=global, f=file
 or
 :sc find s|g|f word
