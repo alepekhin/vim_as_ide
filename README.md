@@ -18,7 +18,7 @@ Vim IDE based on YouCompleteMe and cscope
  vi .
 ```
 ## Features
-- code completion - Ctrl-space
+- code completion - `Ctrl-space`
 - class and methods docs - keep cursor on name
 - find definition 
 ```
@@ -27,16 +27,9 @@ Ctrl-\ s|g|f - s=search, g=global, f=file
 or
 :sc find s|g|f word
 ```
-- refactoring - :YcmCompleter RefactorName new_name
-- improve code
-
-```
-:YcmCompleter FixIt
-```
-- format code
-```
-:YcmCompleter Format
-```
+- refactoring - `:YcmCompleter RefactorName new_name`
+- improve code `:YcmCompleter FixIt`
+- format code `:YcmCompleter Format`
 - debugging
 
 ```
