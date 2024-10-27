@@ -10,17 +10,36 @@ Vim IDE based on YouCompleteMe and cscope
 
 ## Usage
 
+- go to project directory
+- execute
+```
+ find . -name "*.java" > cscope.files
+ cscope -b
+ vi .
+```
+## Features
 - code completion - Ctrl-space
 - class and methods docs - keep cursor on name
-- refactoring - :YcmCompleter RefactorName new_name
-- creating cscope.out:
+- find definition 
 ```
-# find . -name "*.java" > cscope.files
-# cscope -b
+yank word and then
+```
+Ctrl-\ s|g|f - s=search, g=global, f=file
+or
+:sc find s|g|f word
+```
+- refactoring - :YcmCompleter RefactorName new_name
+- improve code
 
-then see usage at class A
+```
+:YcmCompleter FixIt
+```
+- format code
+```
+:YcmCompleter Format
 ```
 - debugging
+
 ```
 # gradle build
 # jdb -sourcepath src/main/java -classpath build/classes/java/main demo.package1.A
