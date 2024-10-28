@@ -1,0 +1,61 @@
+*Netrw*
+
+vim .          open directory
+mf             mark file
+mu             unmark all marked files
+mt             set taarget dir
+mc             copy file to target dir
+mm             move file to target dir
+mx             apply sh command to marked file
+
+
+*Vim*
+
+"+y            	    copy to system clipboard
+"+p            	    read from system clipboard
+G              	    last line
+gg             	    first line
+:r file        	    insert file content
+:r!cmd         	    insert shell cmd output
+:ls            	    list buffers
+:bn            	    next  buffer:
+:b3            	    3-rd  buffer
+:split file    	    split and open file
+:vsplit file   	    split and open file verically
+:diffthis      	    turn on diff mode (do it on both split)
+:diffoff       	    turn off diff mode
+10 Ctrl-w _    	    set height of splited window to 10
+10 Ctrl-w |    	    set width of splited window to 10
+Ctrl-w +/-     	    increase/decrease height
+Ctrl-w >/<     	    increase/decrease width
+:Ctrl-r "      	    copy yanked text to cmd
+:!open file    	    play pdf, mp4 in OS
+'qa            	    start writing macro to a
+!q             	    stop writing macro
+@a             	    play macro
+:helptags ./	    create tags file in current directory if it does not exists
+:set number	        show lie numbers
+
+*IDE*
+
+--- YouCompleteMe ---
+Ctrl-space                              show completions, use Tab to select
+:YcmCompleter RefactorRename <new name> Warning: the buffers are not saved automatically
+:YcmCompleter FixIt                     Where available, attempts to make changes to the buffer to correct diagnostics 
+:YcmCompleter GoToDeclaration           Looks up the symbol under the cursor and jumps to its declaration
+:YcmCompleter GoToDefinition
+:YcmCompleter GoTo                      GoTo* best effort
+:YcmCompleter GoToImplementation
+:YcmCompleter GoToType
+:YcmCompleter Format
+
+--- cscope integration ---
+#find . -name '*.java' > cscope.files
+#cscope -b
+Ctrl-\ s            search symbol
+Ctrl-\ space        search symbol
+Ctrl-t              jump back
+Ctrl-\ g            search global definition
+:cs find g word     search global definition, yank word before, if Ctrl-| g does not work
+
+  

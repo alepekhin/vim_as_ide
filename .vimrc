@@ -227,7 +227,20 @@ if has("cscope")
 
 endif
 
+" groovy language server
+let g:ycm_language_server = [
+   \   {
+   \     'name': 'groovy',
+   \     'cmdline': [ 'java', '-jar',  '/home/alepekhin/bin/groovy-language-server-all.jar'  ],
+   \     'filetypes': [ 'groovy' ]
+   \   },
+   \ ]
+
 set signcolumn=no
+
+" show status line with cursor position
+set laststatus=2
+set ruler
 
 filetype plugin indent on
 " show existing tab with 4 spaces width
@@ -240,3 +253,6 @@ set expandtab
 
 " don't show preview scratch wibdow
 "set completeopt-=preview
+
+" Return to netrw view
+map <silent> <C-\><C-\> <ESC>:Re<CR>

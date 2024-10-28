@@ -1,10 +1,10 @@
 # vim_as_ide
-Vim IDE based on YouCompleteMe, cscope, lsp
+Vim IDE based on YouCompleteMe and cscope
 
 ## Prerequisites
 
 - Ubuntu 22.04.5 LTS with cscope installed
-- vim 9.1.810 with all needed plugins installed and .vimrc from this project
+- vim 9.1.810 with ycm and cscope plugins installed
 - openjdk version "21.0.2" 2024-01-16
 - Gradle 8.6
 - Groovy installed
@@ -12,6 +12,7 @@ Vim IDE based on YouCompleteMe, cscope, lsp
 
 ## Usage
 
+- copy .vim and .vimrc to home directory
 - go to project directory
 - execute
 ```
@@ -38,4 +39,5 @@ or
 # gradle build
 # jdb -sourcepath src/main/java -classpath build/classes/java/main demo.package1.A
 ```
-- Features of lsp for groovy code - not investigated
+## Other
+Help for some vim keys is supplied at `keys.txt`
