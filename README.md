@@ -1,13 +1,18 @@
 # vim_as_ide
-Vim with based on YouCompleteMe and cscope IDE replacement    
+Vim with `YouCompleteMe` and `cscope` plugins as IDE replacement    
 Supports C, C++, C#, Java, JavaScript, TypeScript, Python, Rust, Groovy    
 
 ## Prerequisites
+
+### Minimal 
 
 - Ubuntu 22.04.5 LTS with cscope installed
 - vim 9.1.810 
 - openjdk version "21.0.2" 2024-01-16
 - Gradle 8.6
+
+### If Groovy support neened
+
 - Groovy installed
 - Groovy language server installed
 
