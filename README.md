@@ -28,7 +28,7 @@ and gives us the possibility to work with any language in the same environment
 
 Also cscoup itself should be installed in OS
 
-After that we have in vim
+## What we have in vim after that
 
 - code completion, just print or ctrl-space
 - syntax highlighting
