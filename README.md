@@ -52,14 +52,14 @@ Java and Groovy examples supplied
 - Groovy Version: 4.0.23 JVM: 1.8.0_442 Vendor: Private Build OS: Linux
 - Grails Version: 3.3.16 on| JVM Version: 1.8.0_442
 
-## scope usage
+## TODO: cscope usage
 
 ```
  find . -name "*.java" > cscope.files
  cscope -b
  vim .
 ```
-## debugging
+## TODO: debugging
 
 ```
 # gradle build
