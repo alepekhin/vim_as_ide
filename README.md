@@ -35,6 +35,7 @@ After that we have in vim
 - organize imports, command :CocCommand editor.action.organizeImport
 - formatting, :CocCommand editor.action.formatDocument, vim = also can format
 - error detecting, the errors are underlined, hover on - show error
+- documentation and tooltips, use :List to get doc for List
 - show type hierarchy, :CocCommand java.action.showTypeHierarchy
 - go to super implementation, :CocCommand ...
 
