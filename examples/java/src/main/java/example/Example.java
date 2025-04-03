@@ -12,7 +12,7 @@ class Example {
 
     void dummy() {
         List s = new ArrayList<>(); // use CocCommand editor.action.organizeImport for importing
-        // s // autocompletion works here, just print . or use ctrl-space after point
+        //s.// autocompletion works here, just print . or use ctrl-space after point
     }
 
     void another() {
