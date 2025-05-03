@@ -1,6 +1,6 @@
 # vim_as_ide
 
-Vim with `Coc` and `cscope` plugins as IDE replacement    
+Vim with `YCM` plugin as IDE replacement    
 
 Using Vim as IDE set us free from learning key shortcuts for every IDE
 and gives us the possibility to work with any language in the same environment
@@ -19,50 +19,99 @@ and gives us the possibility to work with any language in the same environment
 - build and deployment tools
 - project management
 
+## Prerequisites
+
+Each version of YCM plugin is built with the latest vim version and specific python support in vim
+
+- suppose last version of python3 installed
+- define python config dir: `python3-config --configdir`
+- suppose we have vim distributive
+- go to it and execute
+```
+./configure --with-features=huge \
+            --enable-multibyte \
+            --enable-python3interp=yes \
+            --with-python3-config-dir=/usr/lib/python3.10/config-3.10-x86_64-linux-gnu \
+            --prefix=/usr/local
+
+```
+- `make`
+- vim will be built as `src/vim`
+
 ## What plugins we need in vim
 
 - First some plugin manager, I use Vundle https://github.com/VundleVim/Vundle.vim
-- coc.nvim https://github.com/neoclide/coc.nvim
-- cscope plugin https://www.vim.org/scripts/script.php?script_id=4082
+- YCM plugin https://github.com/ycm-core/YouCompleteMe
+
+YCM will not work just after installation
+
+- go to  `~/.vim/bundle/YouCompleteMe`
+- execute `./install.py --java`
+
+## Other useful plugins
+
 - nerdtree plugin https://github.com/preservim/nerdtree
 - Git integration https://github.com/tpope/vim-fugitive
+- farconics/victionary   " Vict
+- vimwiki/vimwiki        " Vimwiki
+- vim-scripts/grep.vim   " Grep
+- dense-analysis/ale     " ALE - code linter
+- szw/vim-g              " Google
+- weirongxu/plantuml-previewer.vim " PlantUML support
+- voldikss/vim-translator " Dictionary
 
-Also cscoup itself should be installed in OS
 
 ## What we have in vim after that
 
-- code completion, just print or ctrl-space
+- code completion       - no keyboard shortcuts had to be pressed
 - syntax highlighting
-- organize imports, command :CocCommand editor.action.organizeImport
-- formatting, :CocCommand editor.action.formatDocument, vim = also can format
-- error detecting, the errors are underlined, hover on - show error
-- documentation and tooltips, use :List to get doc for List
-- show type hierarchy, :CocCommand java.action.showTypeHierarchy
-- go to super implementation, :CocCommand ...
-- All git commands after :Git
+- organize imports      - YcmCompleter OrganizeImports
+- formatting            - YcmCompleter OrganizeImports
+- error detecting
+- documentation and tooltips
+- show type hierarchy
+- go to super implementation
+- all git commands after :Git
+
+All supported YCM commands:
+
+CallHierarchy
+ExecuteCommand
+FixIt
+Format
+GetDoc
+GetType
+GoTo
+GoToCallees
+GoToCallers
+GoToDeclaration
+GoToDefinition
+GoToDocumentOutline
+GoToImplementation
+GoToReferences
+GoToSymbol
+GoToType
+OrganizeImports
+RefactorRename
+ResolveCallHierarchyItem
+ResolveTypeHierarchyItem
+RestartServer
+TypeHierarchy
+WipeWorkspace
+
 
 ## Examples
 
-Java and Groovy examples supplied
+Java example supplied
 
 ## Tested on
 
 - Ubuntu 22.04.5 LTS with cscope installed
-- vim 9.1.810 
+- vim 9.1.1360 
 - openjdk version "21.0.2" 2024-01-16
+- python 3.10.12
 - Gradle 8.6
-- Groovy Version: 4.0.23 JVM: 1.8.0_442 Vendor: Private Build OS: Linux
-- Grails Version: 3.3.16 on| JVM Version: 1.8.0_442
 
-## cscope usage
-
-Tutorial: https://cscope.sourceforge.net/cscope_vim_tutorial.html
-
-```
- find . -name "*.groovy" > cscope.files
- cscope -b
- vim .
-```
 ## TODO: debugging
 
 ```
