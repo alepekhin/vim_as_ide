@@ -1,6 +1,6 @@
 # vim_as_ide
 
-Vim with `YCM` plugin as IDE replacement    
+Vim with LSP client plugin as IDE replacement    
 
 Using Vim as IDE set us free from learning key shortcuts for every IDE
 and gives us the possibility to work with any language in the same environment

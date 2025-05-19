@@ -10,12 +10,17 @@ import java.util.List;
  */
 class Example {
 
-    void dummy() {
-        List s = new ArrayList<>(); // use CocCommand editor.action.organizeImport for importing
-        //s.// autocompletion works here, just print . or use ctrl-space after point
+    int a = 0;
+
+    void dummy(int x) {
+        List<String> s = new ArrayList<>();
+        int kw = 0;
+        //s   // autocompletion works here, just print .
+        s.add("");
+        a = a + 1;
     }
 
     void another() {
-        dummy();
+        dummy(2);
     }
 }

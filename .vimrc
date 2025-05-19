@@ -23,27 +23,40 @@ set ttyfast
 
 :set backspace=indent,eol,start
 set nocompatible " required, don't remove
-filetype off     " required, don't remove
+" filetype off     " required, don't remove
 
 " set the runtime path to include Vundle plugin manager and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'   " Plug
 Plugin 'preservim/nerdtree'
-Plugin 'neoclide/coc.nvim'
-" Plugin 'neoclide/coc-java'
-call vundle#end()            " required
-filetype plugin indent on    " required
+Plugin 'natebosch/vim-lsc' 
+Plugin 'farconics/victionary'   " Vict
+Plugin 'vimwiki/vimwiki'        " Vimwiki
+Plugin 'vim-scripts/grep.vim'   " Grep
+Plugin 'dense-analysis/ale'     " ALE - code linter
+Plugin 'szw/vim-g'              " Google
+Plugin 'weirongxu/plantuml-previewer.vim'
+Plugin 'voldikss/vim-translator' " Dictionary
+Plugin 'tpope/vim-fugitive'     " Git support 
+" dependencies for java format plugin
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-codefmt'
+Plugin 'google/vim-glaive'
+call vundle#end()               " required
 
-" coc plugin setting
-hi CocFloating ctermbg=black
-hi CocMenuSel ctermbg=darkgrey ctermfg=white
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-inoremap <silent><expr> <C-@> coc#refresh()
-" Use :CocCommand java.project.addToSourcePath.command to add custom folder to Java Source Path
+" the glaive#Install() should go after the "call vundle#end()"
+call glaive#Install()
+" Optional: Enable codefmt's default mappings on the <Leader>= prefix.
+Glaive codefmt plugin[mappings]
+Glaive codefmt google_java_executable="java -jar /home/alepekhin/bin/google-java-format-1.27.0-all-deps.jar --aosp"
 
-" cscope
-source ~/.vim/cscope.vim
+
+filetype plugin indent on       " required
+
+" victionary
+let g:victionary#format_results = 0
+nmap \t <Plug>(victionary#define_under_cursor)20<C-w>+
 
 set signcolumn=no
 
@@ -58,10 +71,13 @@ set tabstop=4
 set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
+let g:translator_source_lang="en"
+let g:translator_target_lang="ru"
+nmap <silent> \e <Plug>TranslateW
+
+command -nargs=1 OpenJavaFile tabedit `find . -name <args>.java`
+let g:lsc_server_commands = {'java': '/home/alepekhin/Github/java-language-server/dist/lang_server_linux.sh'}
+" let g:lsc_server_commands = {'java': '/home/alepekhin/Github/java-language-server/dist/debug_adapter_linux.sh'}
 
 
-" don't show preview scratch wibdow
-"set completeopt-=preview
 
-" Return to netrw view
-map <silent> <C-\><C-\> <C-w>w
