@@ -10,6 +10,7 @@ and gives us the possibility to work with any language in the same environment
 - code completion
 - syntax highlighting
 - error detection and linting
+- code formatting
 - refactoring tools
 - debugging tools
 - code navigation and search
@@ -21,84 +22,63 @@ and gives us the possibility to work with any language in the same environment
 
 ## Prerequisites
 
-Each version of YCM plugin is built with the latest vim version and specific python support in vim
+### Some applications in operating system
 
-- suppose last version of python3 installed
-- define python config dir: `python3-config --configdir`
-- suppose we have vim distributive
-- go to it and execute
-```
-./configure --with-features=huge \
-            --enable-multibyte \
-            --enable-python3interp=yes \
-            --with-python3-config-dir=/usr/lib/python3.10/config-3.10-x86_64-linux-gnu \
-            --prefix=/usr/local
+- Java language server `https://github.com/georgewfraser/java-language-server`
+- Java code formatter `https://github.com/google/google-java-format`
 
-```
-- `make`
-- vim will be built as `src/vim`
+### Some plugins should be installed in vim
 
-## What plugins we need in vim
-
-- First some plugin manager, I use Vundle https://github.com/VundleVim/Vundle.vim
-- YCM plugin https://github.com/ycm-core/YouCompleteMe
-
-YCM will not work just after installation
-
-- go to  `~/.vim/bundle/YouCompleteMe`
-- execute `./install.py --java`
+- VundleVim/Vundle.vim  - plugin manager `https://github.com/VundleVim/Vundle.vim`
+- natebosch/vim-lsc     - language server client plugin `https://github.com/natebosch/vim-lsc`
+- preservim/nerdtre     - file manager plugin `https://github.com/preservim/nerdtree`
+- vim-scripts/grep.vim  - Grep plugin `https://github.com/vim-scripts/grep.vim`
 
 ## Other useful plugins
 
-- nerdtree plugin https://github.com/preservim/nerdtree
-- Git integration https://github.com/tpope/vim-fugitive
-- farconics/victionary   " Vict
-- vimwiki/vimwiki        " Vimwiki
-- vim-scripts/grep.vim   " Grep
-- dense-analysis/ale     " ALE - code linter
-- szw/vim-g              " Google
-- weirongxu/plantuml-previewer.vim " PlantUML support
-- voldikss/vim-translator " Dictionary
+- tpope/vim-fugitive    - Git integration `https://github.com/tpope/vim-fugitive`
+- farconics/victionary  - a dictionary plugin `https://github.com/farconics/victionary`
+- vimwiki/vimwiki       - vimwiki `https://github.com/vimwiki/vimwiki`
+- dense-analysis/ale    - code linter `https://github.com/dense-analysis/ale`
+- szw/vim-g             - Google `https://github.com/szw/vim-g`
+- weirongxu/plantuml-previewer.vim  - PlantUML support `https://github.com/weirongxu/plantuml-previewer.vim`
+- voldikss/vim-translator           - EN-RU translator `https://github.com/voldikss/vim-translator`
 
 
 ## What we have in vim after that
-
-- code completion       - no keyboard shortcuts had to be pressed
+ 
+- code completion
+    print 3 letters and wait
 - syntax highlighting
-- organize imports      - YcmCompleter OrganizeImports
-- formatting            - YcmCompleter OrganizeImports
-- error detecting
+    yes
+- error detection and linting
+    yes
+- code formatting
+    :FormatCode
+- refactoring tools
+    :LSClientRename
+- debugging tools
+    none
+- code navigation and search
+    :LSClientGoToDefinition
+    :LSClientGoToDefinitionSplit
+    :LSClientFindImplementations
+    :LSClientFindReferences
+    :LSClientNextReference
+    :LSClientPreviousReference
+    :Grep -IR
+- code snippets/templates
+    none
 - documentation and tooltips
-- show type hierarchy
-- go to super implementation
-- all git commands after :Git
-
-All supported YCM commands:
-
-CallHierarchy
-ExecuteCommand
-FixIt
-Format
-GetDoc
-GetType
-GoTo
-GoToCallees
-GoToCallers
-GoToDeclaration
-GoToDefinition
-GoToDocumentOutline
-GoToImplementation
-GoToReferences
-GoToSymbol
-GoToType
-OrganizeImports
-RefactorRename
-ResolveCallHierarchyItem
-ResolveTypeHierarchyItem
-RestartServer
-TypeHierarchy
-WipeWorkspace
-
+    :LSClientShowHover
+    :Google topic ie "java list api"
+- test integration
+    none
+- build and deployment tools
+    use OS commands
+- project management
+    support for maven and gradle projects
+    :Git
 
 ## Examples
 
