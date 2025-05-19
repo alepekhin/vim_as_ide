@@ -25,24 +25,24 @@ and gives us the possibility to work with any language in the same environment
 ### Some applications in operating system
 
 - Java language server [https://github.com/georgewfraser/java-language-server](https://github.com/georgewfraser/java-language-server)
-- Java code formatter `https://github.com/google/google-java-format`
+- Java code formatter [https://github.com/google/google-java-format](https://github.com/google/google-java-format)
 
 ### Some plugins should be installed in vim
 
-- VundleVim/Vundle.vim  - plugin manager `https://github.com/VundleVim/Vundle.vim`
-- natebosch/vim-lsc     - language server client plugin `https://github.com/natebosch/vim-lsc`
-- preservim/nerdtre     - file manager plugin `https://github.com/preservim/nerdtree`
-- vim-scripts/grep.vim  - Grep plugin `https://github.com/vim-scripts/grep.vim`
+- VundleVim/Vundle.vim  - plugin manager [https://github.com/VundleVim/Vundle.vim](https://github.com/VundleVim/Vundle.vim)
+- natebosch/vim-lsc     - language server client plugin [https://github.com/natebosch/vim-lsc](https://github.com/natebosch/vim-lsc)
+- preservim/nerdtre     - file manager plugin [https://github.com/preservim/nerdtree](https://github.com/preservim/nerdtree)
+- vim-scripts/grep.vim  - Grep plugin [https://github.com/vim-scripts/grep.vim](https://github.com/vim-scripts/grep.vim)
 
 ## Other useful plugins
 
-- tpope/vim-fugitive    - Git integration `https://github.com/tpope/vim-fugitive`
-- farconics/victionary  - a dictionary plugin `https://github.com/farconics/victionary`
-- vimwiki/vimwiki       - vimwiki `https://github.com/vimwiki/vimwiki`
-- dense-analysis/ale    - code linter `https://github.com/dense-analysis/ale`
-- szw/vim-g             - Google `https://github.com/szw/vim-g`
-- weirongxu/plantuml-previewer.vim  - PlantUML support `https://github.com/weirongxu/plantuml-previewer.vim`
-- voldikss/vim-translator           - EN-RU translator `https://github.com/voldikss/vim-translator`
+- tpope/vim-fugitive    - Git integration [https://github.com/tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)
+- farconics/victionary  - a dictionary plugin [https://github.com/farconics/victionary](https://github.com/farconics/victionary)
+- vimwiki/vimwiki       - vimwiki [https://github.com/vimwiki/vimwiki](https://github.com/vimwiki/vimwiki)
+- dense-analysis/ale    - code linter [https://github.com/dense-analysis/ale](https://github.com/dense-analysis/ale)
+- szw/vim-g             - Google [https://github.com/szw/vim-g](https://github.com/szw/vim-g)
+- weirongxu/plantuml-previewer.vim  - PlantUML support [https://github.com/weirongxu/plantuml-previewer.vim](https://github.com/weirongxu/plantuml-previewer.vim)
+- voldikss/vim-translator           - EN-RU translator [https://github.com/voldikss/vim-translator](https://github.com/voldikss/vim-translator)
 
 
 ## What we have in vim after that
