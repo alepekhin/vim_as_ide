@@ -24,7 +24,7 @@ and gives us the possibility to work with any language in the same environment
 
 ### Some applications in operating system
 
-- Java language server `https://github.com/georgewfraser/java-language-server`
+- Java language server [https://github.com/georgewfraser/java-language-server](https://github.com/georgewfraser/java-language-server)
 - Java code formatter `https://github.com/google/google-java-format`
 
 ### Some plugins should be installed in vim
