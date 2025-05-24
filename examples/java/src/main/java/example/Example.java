@@ -1,26 +1,18 @@
 package example;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Class Documentation
- * 
+ *
  * @author Alex
  */
 class Example {
 
-    int a = 0;
+    static List<Printable> list =
+            List.of(new Book("book1"), new Book("book2"), new Magazine("mag1"));
 
-    void dummy(int x) {
-        List<String> s = new ArrayList<>();
-        int kw = 0;
-        //s   // autocompletion works here, just print .
-        s.add("");
-        a = a + 1;
-    }
-
-    void another() {
-        dummy(2);
+    public static void main(String[] args) {
+        list.stream().forEach(Printable::print);
     }
 }

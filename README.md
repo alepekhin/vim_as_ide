@@ -56,16 +56,14 @@ and gives us the possibility to work with any language in the same environment
 - code formatting
     :FormatCode
 - refactoring tools
-    :LSClientRename
+    :LSClientRename - does not work properly
 - debugging tools
     none
 - code navigation and search
     :LSClientGoToDefinition
     :LSClientGoToDefinitionSplit
-    :LSClientFindImplementations
-    :LSClientFindReferences
-    :LSClientNextReference
-    :LSClientPreviousReference
+    :LSClientFindImplementations - does not work at all
+    :LSClientFindReferences - fiend where this variable used
     :Grep -IR
 - code snippets/templates
     none
@@ -78,7 +76,8 @@ and gives us the possibility to work with any language in the same environment
     use OS commands
 - project management
     support for maven and gradle projects
-    :Git
+    support git through :Git
+    show file maneger through nerdtree plugin
 
 ## Examples
 
@@ -92,12 +91,16 @@ Java example supplied
 - python 3.10.12
 - Gradle 8.6
 
-## TODO: debugging
+## Debugging
+
+For debugging we need to know jdb and it's commands
+
+[See jdb documentation](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/jdb.html)
+
+Example:
 
 ```
 # gradle build
-# jdb -sourcepath src/main/java -classpath build/classes/java/main demo.package1.A
+# jdb -sourcepath src/main/java -classpath build/classes/java/main demo.package.Applicaton
 ```
 
-## Other
-Help for some vim keys is supplied at `keys.txt`
