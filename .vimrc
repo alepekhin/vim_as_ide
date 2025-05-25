@@ -58,7 +58,7 @@ filetype plugin indent on       " required
 
 " victionary
 let g:victionary#format_results = 0
-nmap \t <Plug>(victionary#define_under_cursor)20<C-w>+
+nnoremap \t <Plug>(victionary#define_under_cursor)20<C-w>+
 
 set signcolumn=no
 
@@ -75,10 +75,12 @@ set shiftwidth=4
 set expandtab
 let g:translator_source_lang="en"
 let g:translator_target_lang="ru"
-nmap <silent> \e <Plug>TranslateW
+nnoremap <silent> \e <Plug>TranslateW
 
 command -nargs=1 OpenJavaFile tabedit `find . -name <args>.java`
 let g:lsc_server_commands = {'java': '/home/alepekhin/Github/java-language-server/dist/lang_server_linux.sh'}
-nmap K :LSClientShowHover<CR>
-setl completeopt-=preview " don't show preview
+nnoremap K :LSClientShowHover<CR>
+command FindUsages LSClientFindReferences
+command FindDefinition LSClientGoToDefinitionSplit
+set completeopt-=preview
 

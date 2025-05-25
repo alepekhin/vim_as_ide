@@ -60,15 +60,14 @@ and gives us the possibility to work with any language in the same environment
 - debugging tools
     none
 - code navigation and search
-    :LSClientGoToDefinition
-    :LSClientGoToDefinitionSplit
+    :LSClientGoToDefinitionSplit -> :FindDefinition
     :LSClientFindImplementations - does not work at all
-    :LSClientFindReferences - fiend where this variable used
-    :Grep -IR
+    :LSClientFindReferences - fiend where this variable used, :FindUsages
+    :Grep -rI 
 - code snippets/templates
     none
 - documentation and tooltips
-    :LSClientShowHover
+    :LSClientShowHover -> K
     :Google topic ie "java list api"
 - test integration
     none
