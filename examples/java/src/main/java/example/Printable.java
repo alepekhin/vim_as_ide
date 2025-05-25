@@ -1,5 +1,8 @@
 package example;
 
+/**
+ * Add printable functionality
+ */
 interface Printable {
 
     /**
