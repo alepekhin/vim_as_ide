@@ -96,10 +96,19 @@ For debugging we need to know jdb and it's commands
 
 [See jdb documentation](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/jdb.html)
 
-Example:
+For typical gradle project:
 
-```
-# gradle build
-# jdb -sourcepath src/main/java -classpath build/classes/java/main demo.package.Applicaton
-```
+gradle clean test --debug-jvm
+jdb -attach 5005
+help
+use src/main/java
+stop at Solution:10
+run
+list
+step                      -- execute current line
+step up                   -- execute until the current method returns to its caller
+stepi                     -- execute current instruction
+next                      -- step one line (step OVER calls)
+cont                      -- continue execution from breakpoint
+exit
 
