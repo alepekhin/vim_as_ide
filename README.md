@@ -5,6 +5,8 @@ Vim with LSP client plugin as IDE replacement
 Using Vim as IDE set us free from learning key shortcuts for every IDE
 and gives us the possibility to work with any language in the same environment
 
+Example of `.vimrc` supplied
+
 ## What we expect from IDE
 
 - code completion
@@ -96,8 +98,8 @@ For debugging we need to know jdb and it's commands
 
 [See jdb documentation](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/jdb.html)
 
-For typical gradle project:
-
+For debug unit test in typical gradle project:
+```
 gradle clean test --debug-jvm
 jdb -attach 5005
 help
@@ -111,4 +113,4 @@ stepi                     -- execute current instruction
 next                      -- step one line (step OVER calls)
 cont                      -- continue execution from breakpoint
 exit
-
+```
