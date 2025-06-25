@@ -36,7 +36,8 @@ call vundle#end()               " required
 " 
 " victionary 
 let g:victionary#format_results = 0
-nnoremap \t <Plug>(victionary#define_under_cursor)20<C-w>+
+" explain word 
+nnoremap \e <Plug>(victionary#define_under_cursor)20<C-w>+
 " 
 " show status line with cursor position 
 set laststatus=2
@@ -56,7 +57,8 @@ set expandtab
 " Translater settings 
 let g:translator_source_lang="en"
 let g:translator_target_lang="ru"
-nnoremap <silent> \e <Plug>TranslateW
+" translate word
+nnoremap <silent> \t <Plug>TranslateW
 " 
 " Lnaguage server related settings 
 command -nargs=1 OpenJavaFile tabedit `find . -name <args>.java`
