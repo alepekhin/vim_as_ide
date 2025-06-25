@@ -30,18 +30,9 @@ Plugin 'szw/vim-g'              " Google
 Plugin 'weirongxu/plantuml-previewer.vim'
 Plugin 'voldikss/vim-translator' " Dictionary
 Plugin 'tpope/vim-fugitive'     " Git support 
-" dependencies for java format plugin
-Plugin 'google/vim-maktaba'
-Plugin 'google/vim-codefmt'
-Plugin 'google/vim-glaive'
+Plugin 'othree/xml.vim'         " xml editing
 Plugin 'vim/colorschemes'
 call vundle#end()               " required
-" 
-" the glaive#Install() should go after the "call vundle#end()" 
-call glaive#Install()
-" Optional: Enable codefmt's default mappings on the <Leader>= prefix.
-Glaive codefmt plugin[mappings]
-Glaive codefmt google_java_executable="java -jar /home/alepekhin/bin/google-java-format-1.27.0-all-deps.jar --aosp"
 " 
 " victionary 
 let g:victionary#format_results = 0
@@ -51,11 +42,10 @@ nnoremap \t <Plug>(victionary#define_under_cursor)20<C-w>+
 set laststatus=2
 set ruler
 " 
-" Formatting settings 
+" Formatting settings, required
 set signcolumn=no
-filetype plugin indent on       " required
-set nocompatible " required, don't remove
 filetype plugin indent on
+set nocompatible
 " show existing tab with 4 spaces width
 set tabstop=4
 " when indenting with '>', use 4 spaces width
@@ -71,11 +61,11 @@ nnoremap <silent> \e <Plug>TranslateW
 " Lnaguage server related settings 
 command -nargs=1 OpenJavaFile tabedit `find . -name <args>.java`
 let g:lsc_server_commands = {'java': '/home/alepekhin/Github/java-language-server/dist/lang_server_linux.sh'}
+"let g:lsc_server_commands = {'java': '/home/alepekhin/Github/branches/java-language-server-main/dist/lang_server_linux.sh'}
 nnoremap K :LSClientShowHover<CR>
 command FindUsages LSClientFindReferences
 command FindDefinition LSClientGoToDefinitionSplit
 set completeopt-=preview
- 
 " highlight code 
 :syntax on
 :filetype plugin on
@@ -87,6 +77,10 @@ set completeopt-=preview
 "" set sensible highlight matches that don't obscure the text 
 :highlight MatchParen cterm=underline ctermbg=black ctermfg=NONE
 :highlight MatchParen gui=underline guibg=black guifg=NONE
+:highlight Error ctermbg=magenta ctermfg=black
 "
-:iabbrev ppr System.out.println();
+:iabbrev ppp System.out.println();
+
+command Keys new +set\ noma|set\ ro ~/vimwiki/Vim.wiki
+" autocmd FileType html setlocal formatprg=tidy\ -indent\ -quiet\ --show-errors\ 0\ --tidy-mark\ no\ --show-body-only\ auto
 
