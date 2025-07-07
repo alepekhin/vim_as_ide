@@ -32,6 +32,7 @@ Plugin 'voldikss/vim-translator' " Dictionary
 Plugin 'tpope/vim-fugitive'     " Git support 
 Plugin 'othree/xml.vim'         " xml editing
 Plugin 'vim/colorschemes'
+Plugin 'gergap/vim-ollama'
 call vundle#end()               " required
 " 
 " victionary 
@@ -85,4 +86,19 @@ set completeopt-=preview
 
 command Keys new +set\ noma|set\ ro ~/vimwiki/Vim.wiki
 " autocmd FileType html setlocal formatprg=tidy\ -indent\ -quiet\ --show-errors\ 0\ --tidy-mark\ no\ --show-body-only\ auto
+" Define a command to fetch URL and show response
+command! -nargs=0  Joke call JokeResponse()
 
+function! JokeResponse()
+  " Run curl command, capture output
+  let l:response = system('curl -s ' . shellescape("https://v2.jokeapi.dev/joke/any"))
+  
+  " Open a new split window
+  new
+  " Set buffer content to response
+  call setline(1, split(l:response, "\n"))
+  " Optional: set buffer name
+  file Curl Response
+  " Optional: set buffer to read-only
+  setlocal buftype=nofile bufhidden=wipe nobuflisted
+endfunction
