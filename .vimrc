@@ -20,19 +20,19 @@ set rtp+=~/.vim/bundle/Vundle.vim
 " 
 " plugin section 
 call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'   " Plug
-Plugin 'preservim/nerdtree'
-Plugin 'alepekhin/vim-lsc' 
-Plugin 'farconics/victionary'   " Vict
+Plugin 'VundleVim/Vundle.vim'   " Plugin manager
+Plugin 'preservim/nerdtree'     " File manager
+Plugin 'farconics/victionary'   " Victionary
 Plugin 'vimwiki/vimwiki'        " Vimwiki
 Plugin 'vim-scripts/grep.vim'   " Grep
 Plugin 'szw/vim-g'              " Google
-Plugin 'weirongxu/plantuml-previewer.vim'
+Plugin 'weirongxu/plantuml-previewer.vim' " view plunuml diagrams
 Plugin 'voldikss/vim-translator' " Dictionary
 Plugin 'tpope/vim-fugitive'     " Git support 
 Plugin 'othree/xml.vim'         " xml editing
-Plugin 'vim/colorschemes'
-Plugin 'gergap/vim-ollama'
+Plugin 'vim/colorschemes'       " beautiful colors
+Plugin 'gergap/vim-ollama'      " LLM support
+Plugin 'natebosch/vim-lsc'      " language server client 
 call vundle#end()               " required
 " 
 " victionary 
@@ -102,3 +102,6 @@ function! JokeResponse()
   " Optional: set buffer to read-only
   setlocal buftype=nofile bufhidden=wipe nobuflisted
 endfunction
+
+let g:ollama_use_inline_diff=0
+let g:ollama_enabled=0
