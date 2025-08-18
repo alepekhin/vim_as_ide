@@ -13,16 +13,15 @@ class Book implements Printable {
     /**
      * Constructor
      */
-    Book(String name) {
+    Book (String name) {
         this.name = name;
     }
 
     /**
      * print book as it is Printable
      */
-    @Override
-    public void print() {
-        System.out.println(name);
+    @Override public void print () {
+        System.out.println (name);
     }
 
 }

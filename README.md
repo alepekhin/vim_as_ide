@@ -32,53 +32,45 @@ Example of `.vimrc` supplied
 
 ### Some plugins should be installed in vim
 
-Plugin 'VundleVim/Vundle.vim'   " Plugin manager
-Plugin 'preservim/nerdtree'     " File manager
-Plugin 'farconics/victionary'   " Victionary
-Plugin 'vimwiki/vimwiki'        " Vimwiki
-Plugin 'vim-scripts/grep.vim'   " Grep
-Plugin 'szw/vim-g'              " Google
-Plugin 'weirongxu/plantuml-previewer.vim' " view plunuml diagrams
-Plugin 'voldikss/vim-translator' " Dictionary
-Plugin 'tpope/vim-fugitive'     " Git support 
-Plugin 'othree/xml.vim'         " xml editing
-Plugin 'vim/colorschemes'       " beautiful colors
-Plugin 'gergap/vim-ollama'      " LLM support
-Plugin 'natebosch/vim-lsc'      " language server client 
+See example in .vimtc
 
 ## What we have in vim after that
- 
+
+From vim-lsc plugin https://github.com/natebosch/vim-lsc
+
 - code completion
     print 3 letters and wait
 - syntax highlighting
     yes
-- error detection and linting
-    yes
+- error detection
+    :LSClientAllDiagnostics 
+- linting
+    ???
 - code formatting
-    :FormatCode
+    :Autoformat
 - refactoring tools
-    :LSClientRename - does not work properly
+    :LSClientRename - can rename variable at least
+- test integration
 - debugging tools
-    none
+    :terminal       - open terminal and use jdb
 - code navigation and search
-    :LSClientGoToDefinitionSplit -> :FindDefinition
-    :LSClientFindImplementations - does not work at all
-    :LSClientFindReferences - fiend where this variable used, :FindUsages
-    :Grep -rI 
-- code snippets/templates
+    :LSClientGoToDefinition         - open in the same windiw
+    :LSClientGoToDefinitionSplit    - open in split window
+    :LSClientFindImplementations    - does not work in our language server
+    :LSClientFindReferences         - works
+    use grep if nothing helps
+- code snippets
     none
 - documentation and tooltips
-    :LSClientShowHover -> K
-    :Google topic ie "java list api"
-- test integration
-    none
+    :LSClientShowHover  - use mouse scroll button or touchpad two fingers for scrolling in popup
 - build and deployment tools
-    use OS commands
+    :terminal                       - open terminal and use OS commands
 - project management
     support for maven and gradle projects
-    support git through :Git
     show file maneger through nerdtree plugin
 - ollama LLM client with code generation and review
+  yank prompt and execute
+  :.OllamaEdit do                   - insert AI generated code at current line (.)
 
 ## Examples
 
