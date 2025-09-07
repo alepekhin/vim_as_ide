@@ -94,7 +94,7 @@ For debugging we need to know jdb and it's commands
 For debug unit test in typical gradle project:
 ```
 gradle clean test --debug-jvm
-jdb -attach 5005
+jdb -sourcepath src/test/java -attach 5005
 help
 use src/main/java
 stop at Solution:10
