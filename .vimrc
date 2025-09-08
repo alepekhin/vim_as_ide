@@ -24,12 +24,16 @@ Plugin 'VundleVim/Vundle.vim'   " Plugin manaGger
 Plugin 'preservim/nerdtree'     " File manager
 Plugin 'vimwiki/vimwiki'        " Vimwiki
 Plugin 'natebosch/vim-lsc'      " language server client 
+Plugin 'vim-scripts/grep.vim'   " Grep
+Plugin 'tpope/vim-fugitive'     " Git
+Plugin 'samoshkin/vim-find-files'
 Plugin 'vim-autoformat/vim-autoformat'
 Plugin 'gergap/vim-ollama'      " LLM support
+
 call vundle#end()               " required
 " 
 let g:ollama_use_inline_diff=0
-let g:ollama_enabled=1
+let g:ollama_enabled=0
 " 
 " show status line with cursor position 
 set laststatus=2
@@ -49,15 +53,18 @@ set expandtab
 " Lnaguage server related settings 
 command -nargs=1 OpenJavaFile tabedit `find . -name <args>.java`
 let g:lsc_server_commands = {'java': '/home/alepekhin/Github/java-language-server/dist/lang_server_linux.sh'}
-"let g:lsc_server_commands = {'java': '/home/alepekhin/Github/branches/java-language-server-main/dist/lang_server_linux.sh'}
 set completeopt-=preview
 " highlight code 
 :syntax on
 :filetype plugin on
-"" set sensible highlight matches that don't obscure the text 
-:highlight MatchParen cterm=underline ctermbg=black ctermfg=NONE
-:highlight MatchParen gui=underline guibg=black guifg=NONE
-:highlight Error ctermbg=magenta ctermfg=black
+" set sensible highlight matches that don't obscure the text 
+:highlight Normal cterm=none ctermbg=Black ctermfg=NONE
+:highlight MatchParen cterm=none ctermbg=Black ctermfg=NONE
+:highlight MatchParen gui=underline guibg=Black guifg=NONE
+:highlight Error ctermbg=Red ctermfg=Black
+:highlight Comment ctermfg=yellow cterm=italic
+:highlight Pmenu ctermbg=gray guibg=gray
+:highlight PmenuSel ctermbg=green guibg=green
 "
 :iabbrev sop System.out.println();
 :iabbrev psv public static void main(String[] args){}
@@ -65,5 +72,9 @@ set completeopt-=preview
 vnoremap <C-c> "+y
 nmap <C-v> "+p
 imap <C-v> <esc>"+pi
+" Go to next/prev window
+nnoremap <Tab> <C-w>w
+nnoremap <C-j> <C-w>w
+nnoremap <C-k> <C-w>W
 "
 let g:formatterpath = ['/home/alepekgin/bin/java-beautify']
