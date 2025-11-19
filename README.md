@@ -1,6 +1,6 @@
 # vim_as_ide
 
-Vim with LSP and LLM client plugins as IDE replacement    
+Vim with LSP and LLM client plugins as Java IDE    
 
 Using Vim as IDE set us free from learning key shortcuts for every IDE
 and gives us the possibility to work with any language in the same environment
@@ -45,20 +45,22 @@ From vim-lsc plugin https://github.com/natebosch/vim-lsc
 - error detection
     :LSClientAllDiagnostics 
 - linting
-    ???
+    yes
 - code formatting
-    :Autoformat
+    :normal gg=G
 - refactoring tools
     :LSClientRename - can rename variable at least
+    :LSClientFindCodeActions - can find nedded imports
 - test integration
 - debugging tools
     :terminal       - open terminal and use jdb
 - code navigation and search
-    :LSClientGoToDefinition         - open in the same windiw
+    :LSClientGoToDefinition         - open in the same window
     :LSClientGoToDefinitionSplit    - open in split window
     :LSClientFindImplementations    - does not work in our language server
     :LSClientFindReferences         - works
-    use grep if nothing helps
+    use grep if nothing helps, for example
+    :grep -r pattern src/main/java
 - code snippets
     none
 - documentation and tooltips
@@ -70,20 +72,21 @@ From vim-lsc plugin https://github.com/natebosch/vim-lsc
     show file maneger through nerdtree plugin
 - ollama LLM client with code generation and review
   yank prompt and execute
-  :.OllamaEdit do                   - insert AI generated code at current line (.)
+  :.OllamaEdit do                   - insert AI generated code at current line (.) - does not work now :(( use auto completion
+
+  For easy access use menu from vim-yapm https://github.com/alepekhin/vim-yapm
 
 ## Examples
 
-Java examples supplied.
-See ollama usage in MyFictionBook.java
+Java example supplied.
 
 ## Tested on
 
-- Ubuntu 22.04.5 LTS with cscope installed
+- Ubuntu 22.04.5 LTS
 - vim 9.1.1360 
-- openjdk version "21.0.2" 2024-01-16
-- python 3.10.12
-- Gradle 8.6
+- java version "25" 2025-09-16 LTS
+- python 3.14.0
+- Gradle 9.2.0
 
 ## Debugging
 
@@ -97,7 +100,7 @@ gradle clean test --debug-jvm
 jdb -sourcepath src/test/java -attach 5005
 help
 use src/main/java
-stop at Solution:10
+stop at :10
 run
 list
 step                      -- execute current line

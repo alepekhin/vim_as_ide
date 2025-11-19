@@ -20,20 +20,14 @@ set rtp+=~/.vim/bundle/Vundle.vim
 " 
 " plugin section 
 call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'   " Plugin manaGger
+Plugin 'VundleVim/Vundle.vim'   " Plugin manager
 Plugin 'preservim/nerdtree'     " File manager
-Plugin 'vimwiki/vimwiki'        " Vimwiki
 Plugin 'natebosch/vim-lsc'      " language server client 
-Plugin 'vim-scripts/grep.vim'   " Grep
-Plugin 'tpope/vim-fugitive'     " Git
-Plugin 'samoshkin/vim-find-files'
-Plugin 'vim-autoformat/vim-autoformat'
 Plugin 'gergap/vim-ollama'      " LLM support
-
+Plugin 'alepekhin/vim-yapm'     " popup menu
 call vundle#end()               " required
 " 
 let g:ollama_use_inline_diff=0
-let g:ollama_enabled=0
 " 
 " show status line with cursor position 
 set laststatus=2
@@ -54,6 +48,8 @@ set expandtab
 command -nargs=1 OpenJavaFile tabedit `find . -name <args>.java`
 let g:lsc_server_commands = {'java': '/home/alepekhin/Github/java-language-server/dist/lang_server_linux.sh'}
 set completeopt-=preview
+" help for keys
+command Keys new +set\ noma|set\ ro ~/Documents/vim-keys.txt
 " highlight code 
 :syntax on
 :filetype plugin on
@@ -61,20 +57,18 @@ set completeopt-=preview
 :highlight Normal cterm=none ctermbg=Black ctermfg=NONE
 :highlight MatchParen cterm=none ctermbg=Black ctermfg=NONE
 :highlight MatchParen gui=underline guibg=Black guifg=NONE
-:highlight Error ctermbg=Red ctermfg=Black
+:highlight Error ctermbg=lightyellow ctermfg=black
 :highlight Comment ctermfg=yellow cterm=italic
-:highlight Pmenu ctermbg=gray guibg=gray
+:highlight Pmenu ctermbg=darkgrey ctermfg=white
 :highlight PmenuSel ctermbg=green guibg=green
-"
-:iabbrev sop System.out.println();
-:iabbrev psv public static void main(String[] args){}
+"  
+:iabbrev sop System.out.println(
+:iabbrev psv public static void main(String[] args) {
 " Use ctrl-c Ctrl-v to copy/past
 vnoremap <C-c> "+y
 nmap <C-v> "+p
 imap <C-v> <esc>"+pi
-" Go to next/prev window
-nnoremap <Tab> <C-w>w
-nnoremap <C-j> <C-w>w
-nnoremap <C-k> <C-w>W
-"
-let g:formatterpath = ['/home/alepekgin/bin/java-beautify']
+" increase timeout for OllamaReview for big java file
+let g:ollama_chat_timeout = 60
+" map escape as recommend
+:inoremap jk <esc>
