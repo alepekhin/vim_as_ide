@@ -5,108 +5,140 @@ Vim with LSP and LLM client plugins as Java IDE
 Using Vim as IDE set us free from learning key shortcuts for every IDE
 and gives us the possibility to work with any language in the same environment
 
-Example of `.vimrc` supplied
+Neovim configuration:
 
-## What we expect from IDE
-
-- code completion
-- syntax highlighting
-- error detection and linting
-- code formatting
-- refactoring tools
-- debugging tools
-- code navigation and search
-- code snippets/templates
-- documentation and tooltips
-- test integration
-- build and deployment tools
-- project management
-- create and review code with AI
-
-## Prerequisites
-
-### Some applications in operating system
-
-- Java language server [https://github.com/georgewfraser/java-language-server](https://github.com/georgewfraser/java-language-server)
-- ollama and language model https://ollama.com/
-
-### Some plugins should be installed in vim
-
-See example in .vimtc
-
-## What we have in vim after that
-
-From vim-lsc plugin https://github.com/natebosch/vim-lsc
-
-- code completion
-    print 3 letters and wait
-- syntax highlighting
-    yes
-- error detection
-    :LSClientAllDiagnostics 
-- linting
-    yes
-- code formatting
-    :normal gg=G
-- refactoring tools
-    :LSClientRename - can rename variable at least
-    :LSClientFindCodeActions - can find nedded imports
-- test integration
-- debugging tools
-    :terminal       - open terminal and use jdb
-- code navigation and search
-    :LSClientGoToDefinition         - open in the same window
-    :LSClientGoToDefinitionSplit    - open in split window
-    :LSClientFindImplementations    - does not work in our language server
-    :LSClientFindReferences         - works
-    use grep if nothing helps, for example
-    :grep -r pattern src/main/java
-- code snippets
-    none
-- documentation and tooltips
-    :LSClientShowHover  - use mouse scroll button or touchpad two fingers for scrolling in popup
-- build and deployment tools
-    :terminal                       - open terminal and use OS commands
-- project management
-    support for maven and gradle projects
-    show file maneger through nerdtree plugin
-- ollama LLM client with code generation and review
-  yank prompt and execute
-  :.OllamaEdit do                   - insert AI generated code at current line (.) - does not work now :(( use auto completion
-
-  For easy access use menu from vim-yapm https://github.com/alepekhin/vim-yapm
-
-## Examples
-
-Java example supplied.
-
-## Tested on
-
-- Ubuntu 22.04.5 LTS
-- vim 9.1.1360 
-- java version "25" 2025-09-16 LTS
-- python 3.14.0
-- Gradle 9.2.0
-
-## Debugging
-
-For debugging we need to know jdb and it's commands
-
-[See jdb documentation](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/jdb.html)
-
-For debug unit test in typical gradle project:
 ```
-gradle clean test --debug-jvm
-jdb -sourcepath src/test/java -attach 5005
-help
-use src/main/java
-stop at :10
-run
-list
-step                      -- execute current line
-step up                   -- execute until the current method returns to its caller
-stepi                     -- execute current instruction
-next                      -- step one line (step OVER calls)
-cont                      -- continue execution from breakpoint
-exit
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+vim.pack.add({
+    { src = 'https://github.com/neovim/nvim-lspconfig' },
+    { src = 'https://github.com/nvim-tree/nvim-tree.lua' },
+    { src = "https://github.com/nvim-lua/plenary.nvim" },
+    { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+    { src = "https://github.com/olimorris/codecompanion.nvim" },
+    { src = "https://github.com/folke/which-key.nvim" },
+    { src = "https://github.com/mfussenegger/nvim-dap" },
+    { src = "https://github.com/nvim-neotest/nvim-nio" },
+    { src = "https://github.com/rcarriga/nvim-dap-ui" },
+})
+
+require('dapui').setup()
+
+require('nvim-treesitter').install { 'java', 'yaml' }
+
+require("codecompanion").setup({
+  interactions = {
+    chat = {
+      adapter = "ollama",
+      model = "qwen2.5-coder:14b"
+    },
+    inline = {
+      adapter = {
+        name = "ollama",
+        model = "qwen2.5-coder:14b"
+      },
+    },
+  },
+  opts = {
+    log_level = "DEBUG",
+  },
+})
+
+require("nvim-tree").setup({
+    renderer = {
+        icons = {
+            show = {
+                file = false,
+                folder = true,
+                folder_arrow = true,
+                git = false,
+            },
+        },
+    },
+})
+
+vim.lsp.config['jls'] = {
+    -- absolute path here:
+    cmd = { '/home/alepekhin/projects/Github/jls/dist/lang_server_linux.sh' },
+    filetypes = { 'java' },
+    root_markers = {  'build.gradle', 'pom.xml' , '.git', '.' },
+    on_attach = function(client, bufnr)
+        vim.lsp.completion.enable(true, client.id, bufnr, {
+            autotrigger = true,
+            convert = function(item)
+                return { abbr = item.label:gsub('%b()', '') }
+            end,
+        })
+    end,
+    settings = { 
+        codelens = { enable = true }, 
+        inlay_hint = { enable = true },
+        linked_editing_range = { enable = true },
+        inlay_hint = { enable = true },
+        inline_completion = { enable = true }
+    },
+}
+
+vim.lsp.enable('jls')
+
+vim.diagnostic.config({
+    virtual_text = true,
+})
+
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.softtabstop = 4
+
+vim.cmd('colorscheme desert')
+vim.opt.completeopt = { "menu", "menuone", "noselect", "popup" }
+
+vim.keymap.set('n', '<Leader><Leader>', '<C-w><C-w>', { noremap = true, silent = true, desc = 'Next window' })
+vim.keymap.set('n', '<Leader>d', '<C-]>', { noremap = true, silent = true, desc = 'Go to declaration' })
+vim.keymap.set('n', '<Leader>i', ':lua vim.lsp.buf.implementation()<CR>', { noremap = true, silent = true, desc = 'Go to implementation' })
+vim.keymap.set('n', '<Leader>s', ':lua vim.lsp.buf.signature_help()<CR>', { noremap = true, silent = true, desc = 'Signature help' })
+vim.keymap.set('n', '<Leader>a', ':lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true, desc = 'Open code action' })
+vim.keymap.set('n', '<Leader>h', ':lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true, desc = 'Hover' })
+vim.keymap.set('n', '<Leader>r', ':lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true, desc = 'Rename' })
+vim.keymap.set('n', '<Leader>c', ':CodeCompanionChat<CR>50<C-w>|', { noremap = true, silent = true, desc = 'Code companion' })
+vim.keymap.set('n', '<Leader>t', ':new term://bash<CR>', { noremap = true, silent = true, desc = 'Open terminal' })
+
+-- my key help
+vim.keymap.set('n', '<Leader>k', ':new +set\\ noma|set\\ ro ~/.config/nvim/keys<CR>', { noremap = true, silent = true, desc = 'Open keys file' })
+
+
+-- Execute Ctrl-N after 3 symbols printed
+vim.api.nvim_create_autocmd("InsertCharPre", {
+  callback = function()
+    -- Get current line content up to cursor
+    local line = vim.api.nvim_get_current_line()
+    local col = vim.api.nvim_win_get_cursor(0)[2]
+    
+    -- Check if we have 3 characters in the current word
+    local current_word = string.match(line:sub(1, col), "%S+$") or ""
+    if #current_word == 2 then -- Using 2 because the 3rd char is about to be added
+        -- Feed Ctrl-N after the current character is inserted
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-N>", true, false, true), "m", true)
+    end
+  end
+})
+
+local dap = require('dap')
+dap.adapters.java = {
+  type = 'executable';
+  command = '/home/alepekhin/projects/Github/jls/dist/debug_adapter_linux.sh';
+}
+dap.configurations.java = {
+  {
+    type = 'java';
+    request = 'attach';
+    name = "Debug (Attach) - Remote";
+    hostName = "127.0.0.1";
+    port = 5005;
+    sourceRoots = {os.getenv("SOURCE_ROOT")};
+  },
+}
 ```
+``
