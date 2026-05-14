@@ -29,10 +29,10 @@ public class Snake {
         Point head = body.getFirst();
         Point newPoint = null;
         switch (direction) {
-            case KeyCode.UP -> newPoint = new Point(head.x, head.y - 1);
-            case KeyCode.DOWN -> newPoint = new Point(head.x, head.y + 1);
-            case KeyCode.LEFT -> newPoint = new Point(head.x - 1, head.y);
-            case KeyCode.RIGHT -> newPoint = new Point(head.x + 1, head.y);
+            case UP -> newPoint = new Point(head.x, head.y - 1);
+            case DOWN -> newPoint = new Point(head.x, head.y + 1);
+            case LEFT -> newPoint = new Point(head.x - 1, head.y);
+            case RIGHT -> newPoint = new Point(head.x + 1, head.y);
         }
         validate(newPoint);
         body.addFirst(newPoint);

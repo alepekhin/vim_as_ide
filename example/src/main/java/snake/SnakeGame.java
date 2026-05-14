@@ -45,13 +45,13 @@ public class SnakeGame extends Application implements Runnable {
         // add key listener
         scene.addEventHandler(KeyEvent.KEY_RELEASED,  t -> {
             switch (t.getCode()) {
-                case KeyCode.UP:
-                case KeyCode.DOWN:
-                case KeyCode.LEFT:
-                case KeyCode.RIGHT:
+                case UP:
+                case DOWN:
+                case LEFT:
+                case RIGHT:
                     direction = t.getCode();
                     break;
-                case KeyCode.SPACE:
+                case SPACE:
                     initGame(grid, label);
             }
         });
