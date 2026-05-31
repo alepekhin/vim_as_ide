@@ -1,78 +1,84 @@
 package snake;
 
-import javafx.scene.paint.Color;
-import java.util.Deque;
 import java.util.LinkedList;
-import javafx.scene.input.KeyCode;
-import java.awt.Point;
+import java.util.List;
 
 /**
- * Змейка
- * Знает про доску
+ * Логика змейки: движение, столкновения, тело.
  */
 public class Snake {
 
-    private Deque<Point> body = new LinkedList<>();
+    private final LinkedList<Point> body;
+    private final int width;
+    private final int height;
 
-    public static final Color SNAKE_COLOR = Color.GREEN;
+    public Snake(int width, int height) {
+        this.width = width;
+        this.height = height;
+        this.body = new LinkedList<>();
 
-    public Snake() {
-        body.addFirst(new Point(Board.COL_NUM / 2, Board.ROW_NUM / 2));
-        body.addLast(new Point(Board.COL_NUM / 2, Board.ROW_NUM / 2 - 1));
-    }
+        int startX = width / 2;
+        int startY = height / 2;
 
-   /**
-     * Перемещение змейки на одну клетку
-     * Возвращает true если съедена еда
-     */
-    public void move(KeyCode direction) {
-        Point head = body.getFirst();
-        Point newPoint = null;
-        switch (direction) {
-            case UP -> newPoint = new Point(head.x, head.y - 1);
-            case DOWN -> newPoint = new Point(head.x, head.y + 1);
-            case LEFT -> newPoint = new Point(head.x - 1, head.y);
-            case RIGHT -> newPoint = new Point(head.x + 1, head.y);
+        for (int i = 0; i < 3; i++) {
+            body.add(new Point(startX - i, startY));
         }
-        validate(newPoint);
-        body.addFirst(newPoint);
-        // что делать с хвостом будет решено в другом месте
     }
 
-    public int getSize() {
-        return body.size();
-    }
-
-    public boolean contains(Point point) {
-        return body.contains(point);
+    public List<Point> getBody() {
+        return body;
     }
 
     public Point getHead() {
         return body.getFirst();
     }
 
-    public Point getTail() {
-        return body.getLast();
-    }
+    /**
+     * Перемещает змейку в указанном направлении.
+     *
+     * @param direction    направление движения
+     * @param foodPosition позиция еды
+     * @return true, если еда была съедена
+     * @throws IllegalStateException при столкновении со стеной или самой собой
+     */
+    public boolean move(Direction direction, Point foodPosition) {
+        Point head = body.getFirst();
+        Point newHead = new Point(head);
 
-    public void removeTail() {
-        body.removeLast();
-    }
+        switch (direction) {
+            case UP:
+                newHead.y--;
+                break;
+            case DOWN:
+                newHead.y++;
+                break;
+            case LEFT:
+                newHead.x--;
+                break;
+            case RIGHT:
+                newHead.x++;
+                break;
+        }
 
-    public void drawHead(Board board) {
-        board.setCellFill(body.getFirst().x, body.getFirst().y, SNAKE_COLOR);
-    }
-
-    public void drawTail(Board board) {
-        board.setCellFill(body.getLast().x, body.getLast().y, SNAKE_COLOR);
-    }
-
-    private void validate(Point newPoint) {
-        if  (newPoint.x < 0 || newPoint.y < 0
-                || newPoint.x >= Board.COL_NUM || newPoint.y >= Board.ROW_NUM
-                || body.contains(newPoint)) {
+        // Проверка столкновения со стеной
+        if (newHead.x < 0 || newHead.x >= width || newHead.y < 0 || newHead.y >= height) {
             throw new IllegalStateException("Game over. Press space");
         }
-    }
 
+        body.addFirst(newHead);
+
+        boolean foodEaten = newHead.equals(foodPosition);
+        if (!foodEaten) {
+            body.removeLast();
+        }
+
+        // Проверка столкновения с собственным телом
+        for (int i = 1; i < body.size(); i++) {
+            if (body.get(i).equals(newHead)) {
+                throw new IllegalStateException("Game over. Press space");
+            }
+        }
+
+        return foodEaten;
+    }
 }

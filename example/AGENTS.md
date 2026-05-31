@@ -8,7 +8,7 @@
 
 ## Технологический стек
 
-- **Язык**: Java 17
+- **Язык**: Java 25
 - **Сборка**: Apache Maven 3.x
 - **GUI-фреймворк**: JavaFX 18 (`javafx-controls`, `javafx-fxml`)
 - **Группа/артефакт**: `com.example:snake-game:1.0-SNAPSHOT`
@@ -44,7 +44,7 @@ src/main/java/
 
 ### Требования
 
-- JDK 17 (или выше)
+- JDK 25
 - Apache Maven
 - JavaFX модульные библиотеки (если запускается не через `mvn javafx:run`)
 

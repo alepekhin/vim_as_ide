@@ -2,8 +2,21 @@
 
 Neovim with LSP and LLM client plugins as Java IDE    
 
-See neovim configuration in `config` folder
+See neovim and opencode configuration in `config` folder
 
-TODO: describe details
+See vibe coded "snake" game in `example` folder 
+
+## Building the game
+
+- create and go to `example` directory
+- open nvim
+```
+nvim .
+```
+- create AGENTS.md with task description 
+- toggle opencode in nvim
+- ask it to create project according requirements
+- that's all!
+
 
 

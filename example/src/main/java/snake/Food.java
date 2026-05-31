@@ -1,38 +1,39 @@
 package snake;
 
-import javafx.scene.paint.Color;
+import java.util.List;
 import java.util.Random;
-import java.awt.Point;
 
 /**
- * Еда, появляющаяся в случайной точке
- * Знает про доску
+ * Еда на игровом поле.
  */
 public class Food {
 
-    private Point point;
-    private Random random = new Random();
+    private final int colNum;
+    private final int rowNum;
+    private final Random random;
+    private Point position;
 
-    public static final Color FOOD_COLOR = Color.RED;
+    public Food(int colNum, int rowNum, List<Point> snakeBody) {
+        this.colNum = colNum;
+        this.rowNum = rowNum;
+        this.random = new Random();
+        respawn(snakeBody);
+    }
 
-    public Food() {
-        point = new Point(random.nextInt(Board.COL_NUM), random.nextInt(Board.ROW_NUM));
+    public Point getPosition() {
+        return position;
     }
 
     /**
-     * Точка, где находится еда
+     * Создает еду в новой случайной свободной клетке.
+     *
+     * @param snakeBody текущее тело змейки
      */
-    public Point getPoint() {
-        return point;
+    public void respawn(List<Point> snakeBody) {
+        do {
+            int x = random.nextInt(colNum);
+            int y = random.nextInt(rowNum);
+            position = new Point(x, y);
+        } while (snakeBody.contains(position));
     }
-
-    public void draw(Board board) {
-        board.setCellFill(point.x, point.y, FOOD_COLOR);
-    }
-
-    public void clean(Board board) {
-        board.clearCell(point.x, point.y);
-        point = null;
-    }
-
 }
