@@ -59,12 +59,12 @@ public class Snake {
         body.removeLast();
     }
 
-    public void drowHead(Board board) {
-        board.getCell(body.getFirst().x, body.getFirst().y).setFill(SNAKE_COLOR);
+    public void drawHead(Board board) {
+        board.setCellFill(body.getFirst().x, body.getFirst().y, SNAKE_COLOR);
     }
 
-    public void drowTail(Board board) {
-        board.getCell(body.getLast().x, body.getLast().y).setFill(SNAKE_COLOR);
+    public void drawTail(Board board) {
+        board.setCellFill(body.getLast().x, body.getLast().y, SNAKE_COLOR);
     }
 
     private void validate(Point newPoint) {

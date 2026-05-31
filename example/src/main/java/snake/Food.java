@@ -26,12 +26,12 @@ public class Food {
         return point;
     }
 
-    public void drow(Board board) {
-        board.getCell(point.x, point.y).setFill(FOOD_COLOR);
+    public void draw(Board board) {
+        board.setCellFill(point.x, point.y, FOOD_COLOR);
     }
 
     public void clean(Board board) {
-        board.getCell(point.x, point.y).setFill(Board.BG_COLOR);
+        board.clearCell(point.x, point.y);
         point = null;
     }
 

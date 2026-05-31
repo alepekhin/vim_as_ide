@@ -204,12 +204,12 @@ public class SnakeGame extends Application {
         gameOverLabel.setVisible(false);
 
         // Перерисовываем доску в начальном состоянии — все ячейки фоновым цветом
-        board.drow();
+        board.clear();
 
         // Змейка начинает из центра доски: голова + один сегмент хвоста
         snake = new Snake();
-        snake.drowHead(board);
-        snake.drowTail(board);
+        snake.drawHead(board);
+        snake.drawTail(board);
 
         // Убираем остатки старой еды, если она ещё отображается на доске
         if (food != null) {
@@ -258,7 +258,7 @@ public class SnakeGame extends Application {
             attempts++;
         } while (snake.contains(food.getPoint()) && attempts < MAX_FOOD_ATTEMPTS);
 
-        food.drow(board);
+        food.draw(board);
     }
 
     /**
@@ -314,12 +314,12 @@ public class SnakeGame extends Application {
                 // Обычный шаг: удаляем хвост из модели и закрашиваем
                 // соответствующую ячейку на доске
                 snake.removeTail();
-                board.getCell(tail.x, tail.y).setFill(Board.BG_COLOR);
+                board.clearCell(tail.x, tail.y);
             }
 
             // Отрисовываем новую голову (и потенциально новый хвост,
             // если змейка выросла — но тело уже зелёное от предыдущих ходов)
-            snake.drowHead(board);
+            snake.drawHead(board);
         } catch (IllegalStateException e) {
             // "Game over. Press space" — текст формируется в Snake.validate(...)
             handleGameOver(e.getMessage());
