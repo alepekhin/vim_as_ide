@@ -1,7 +1,7 @@
 vim.pack.add({
 	'https://github.com/nvim-nio',
-        'https://github.com/nvim-dap',
-        'https://github.com/nvim-dap-ui',
+    'https://github.com/nvim-dap',
+    'https://github.com/nvim-dap-ui',
 })
 
 

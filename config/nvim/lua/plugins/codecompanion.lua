@@ -32,30 +32,18 @@ require("codecompanion").setup({
     },
     interactions = {
         chat = {
+--            adapter = "ollama",
+--            model = "qwen3.5:9b",
             adapter = "kimi",
             model = "Kimi-K2.6",
         },
         inline = {
+--            adapter = "ollama",
+--            model = "qwen3.5:9b",
             adapter = "kimi",
             model = "Kimi-K2.6",
         },
     },
-    --[[ uncomment for using local ollama model
-    interactions = {
-        chat = {
-            adapter = {
-                name = "ollama",
-                model = "qwen3.5:9b"
-            },
-        },
-        inline = {
-            adapter = {
-                name = "ollama",
-                model = "qwen3.5:9b"
-            },
-        },
-    },
-    ]]
     mcp = {
         servers = {
             ["duckduckgo-mcp-server"] = {

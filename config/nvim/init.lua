@@ -1,6 +1,7 @@
 require('plugins.nvim-tree')
 require('plugins.nvim-lspconfig')
-require('plugins.codecompanion')
+--require('plugins.codecompanion')
+require('plugins.opencode')
 require('plugins.dap')
 require('plugins.which-key')
 require('core.keymap')

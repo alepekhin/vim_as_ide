@@ -1,5 +1,5 @@
 vim.pack.add({
-        'https://github.com/nvim-lspconfig',
+    'https://github.com/nvim-lspconfig',
 })
 
 vim.lsp.config['jls'] = {
