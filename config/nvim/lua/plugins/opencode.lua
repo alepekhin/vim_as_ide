@@ -4,31 +4,32 @@ vim.pack.add({
   "https://github.com/folke/snacks.nvim",
 })
 
--- Optional `snacks.nvim` integration for enhanced `ask()` and `select()`
-local ok, snacks = pcall(require, "snacks")
-if ok then
-  snacks.setup({
-    input = {}, -- Enhances `ask()`
-    picker = { -- Enhances `select()`
-      actions = {
-        opencode_send = function(...)
-          return require("opencode").snacks_picker_send(...)
-        end,
-      },
-      win = {
-        input = {
-          keys = {
-            ["<a-a>"] = { "opencode_send", mode = { "n", "i" } },
-          },
+require("snacks").setup({
+  input = {}, -- Enhances ask() prompts with completions, highlights, normal mode
+  picker = {
+    actions = {
+      opencode_send = function(...)
+        return require("opencode").snacks_picker_send(...)
+      end,
+    },
+    win = {
+      input = {
+        keys = {
+          ["<C-s>"] = { "opencode_send", mode = { "n", "i" } },
         },
       },
     },
-  })
-end
+  },
+})
 
----@type opencode.Opts
 vim.g.opencode_opts = {
-  -- Your configuration, if any; goto definition on the type or field for details
+  server = {
+    start = function()
+      require("snacks.terminal").open("opencode --port", {
+        win = { position = "right", enter = false },
+      })
+    end,
+  },
 }
 
 vim.o.autoread = true -- Required for `opts.events.reload`
