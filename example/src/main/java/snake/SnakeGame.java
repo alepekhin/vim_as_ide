@@ -65,7 +65,7 @@ public class SnakeGame extends Application {
         }
 
         isGameOver = false;
-        direction = Direction.RIGHT;
+        direction = Direction.random();
         gameOverLabel.setVisible(false);
 
         board.clear();
