@@ -1,6 +1,8 @@
 # vim_as_ide
 
-Neovim with LSP and LLM client plugins as Java IDE    
+LazyVim is Neovim with all IDE plugins instaled
+
+We shall change Java Language Server to jls 
 
 See neovim and opencode configuration in `config` folder
 

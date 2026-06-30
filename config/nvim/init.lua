@@ -1,8 +1,3 @@
-require('plugins.nvim-tree')
-require('plugins.nvim-lspconfig')
---require('plugins.codecompanion')
-require('plugins.opencode')
-require('plugins.dap')
-require('plugins.which-key')
-require('plugins.buffer-manager')
-require('core.keymap')
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
+vim.opt.runtimepath:append("/home/alepekhin/.local/share/nvim/site/")
