@@ -33,28 +33,8 @@ Run llm
 - curl -fsSL https://opencode.ai/install | bash
   it takes time...
 
-- change ~/.config/opencode/opencode.jsonc to
+- copy config/opencode.jsonc to ~/.config/opencode/opencode.jsonc
 
-
-{
-  "$schema": "https://opencode.ai/config.json",
-  "model": "ollama/carstenuhlig/omnicoder-2-9b:latest",
-  "provider": {
-    "ollama": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "Ollama (Local)",
-      "options": {
-        "baseURL": "http://127.0.0.1:11434/v1"
-      },
-      "models": {
-        "carstenuhlig/omnicoder-2-9b:latest": {
-          "name": "carstenuhlig/omnicoder-2-9b:latest",
-          "tools": true
-        }
-      }
-    }
-  }
-}
 
 ## Install Java
 
