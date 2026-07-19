@@ -1,0 +1,35 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "lsp": {
+    "jdtls": {
+      "disabled": true
+    },
+    "jls": {
+      "command": ["/home/alepekhin/projects/Github/jls/dist/lang_server_linux.sh"],
+      "extensions": [".java"]
+    }
+  },
+  "mcp": {
+    "duckduckgo": {
+      "type": "local",
+      "command": ["uvx", "duckduckgo-mcp-server"],
+      "enabled": true
+    }
+  },
+  "model": "ollama/carstenuhlig/omnicoder-2-9b:latest",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama (Local)",
+      "options": {
+        "baseURL": "http://127.0.0.1:11434/v1"
+      },
+      "models": {
+        "carstenuhlig/omnicoder-2-9b:latest": {
+          "name": "carstenuhlig/omnicoder-2-9b:latest",
+          "tools": true
+        }
+      }
+    }
+  }
+}
