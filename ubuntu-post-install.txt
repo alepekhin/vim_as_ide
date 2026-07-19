@@ -1,0 +1,106 @@
+## Install nvim for editing files
+sudo apt install neovim
+set alias in .bashrc `alias vi='nvim'`
+
+## Get access to external host x.y.z
+
+- copy id_rsa* from previous installation
+- after that should work `ssh root@x.y.z
+
+## Set proxy in Firefox socks5 localhost 9999
+
+## Install chromium as second browser
+sudo apt install chromium
+
+## Install video player
+sudo snap install vlc
+
+## Install ollama
+
+- sudo apt install curl
+- curl -fsSL https://ollama.com/install.sh | sh
+
+Run llm
+
+- ollama run carstenuhlig/omnicoder-2-9b:latest 
+- create alias llm='ollama run carstenuhlig/omnicoder-2-9b:latest'
+
+
+## Install opencode
+
+- mkdir bin
+- cd bin
+- curl -fsSL https://opencode.ai/install | bash
+  it takes time...
+
+- change ~/.config/opencode/opencode.jsonc to
+
+
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "ollama/carstenuhlig/omnicoder-2-9b:latest",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama (Local)",
+      "options": {
+        "baseURL": "http://127.0.0.1:11434/v1"
+      },
+      "models": {
+        "carstenuhlig/omnicoder-2-9b:latest": {
+          "name": "carstenuhlig/omnicoder-2-9b:latest",
+          "tools": true
+        }
+      }
+    }
+  }
+}
+
+## Install Java
+
+sudo apt update
+sudo apt install openjdk-25-jdk -y
+java -version
+
+
+## Install git and clone projects
+
+sudo apt install git
+git clone git@github.com:alepekhin/vim_as_ide.git
+git clone git@github.com:alepekhin/jls.git
+
+## Configure nvim
+
+- sudo apt install ripgrep
+- add nerd fonts
+
+wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip \
+&& cd ~/.local/share/fonts \
+&& unzip JetBrainsMono.zip \
+&& rm JetBrainsMono.zip \
+&& fc-cache -fv
+
+After installing, open your terminal’s settings/preferences and set the Font to JetBrainsMono Nerd Font
+
+
+- copy vim_as_ide/config/nvim tp ~/.config
+
+## Install Maven
+
+sudo apt install maven -y
+
+# Build jls projects
+
+mvn package -Dmaven.test.skip
+ln -s /usr/lib/jvm/java-25-openjdk-amd64 linux
+
+
+## Install mcp server
+
+
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+Add $HOME/.local/bin to your PATH
+
+uv tool install duckduckgo-mcp-server
+
