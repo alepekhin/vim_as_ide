@@ -23,5 +23,34 @@ return {
         sourceRoots = { os.getenv("SOURCE_ROOT") },
       },
     }
+
+    -- Define the Python (debugpy) adapter
+    dap.adapters.python = {
+      type = "executable",
+      command = "python3",
+      args = { "-m", "debugpy.adapter" },
+    }
+
+    -- Set up configurations for Python debugging
+    dap.configurations.python = {
+      {
+        type = "python",
+        request = "launch",
+        name = "Debug (Launch) - File",
+        program = "${file}",
+        console = "integratedTerminal",
+        justMyCode = true,
+        cwd = "${workspaceFolder}",
+      },
+      {
+        type = "python",
+        request = "attach",
+        name = "Debug (Attach) - Remote",
+        connect = { host = "127.0.0.1", port = 5678 },
+        pathMappings = {
+          { localRoot = "${workspaceFolder}", remoteRoot = "." },
+        },
+      },
+    }
   end,
 }
