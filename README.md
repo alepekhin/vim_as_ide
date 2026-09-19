@@ -1,6 +1,8 @@
 # vim_as_ide
 
-LazyVim is Neovim with all IDE plugins instaled
+LazyVim is Neovim with all IDE plugins installed 
+Copy `config/nvim` to `~/.config` and call `nvim` 
+It will install all necessary plugins  
 
 We changed Java Language Server to jls 
 and make some other small changes

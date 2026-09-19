@@ -1,22 +1,25 @@
 return {
-  -- Plugin: opencode.nvim
-  "nickjvandyke/opencode.nvim",
-  dependencies = {
-    "folke/snacks.nvim",
-  },
-  config = function()
-    -- Configure opencode options
-    vim.g.opencode_opts = {
-      server = {
-        start = function()
-          require("snacks.terminal").open("opencode --port", {
-            win = { position = "right", enter = false },
-          })
-        end,
-      },
-    }
+	"sudo-tee/opencode.nvim",
+	config = function()
+		require("opencode").setup({})
+	end,
+	dependencies = {
+		{
+			"MeanderingProgrammer/render-markdown.nvim",
+			opts = {
+				anti_conceal = { enabled = false },
+				file_types = { "markdown", "opencode_output" },
+			},
+			ft = { "markdown", "Avante", "copilot-chat", "opencode_output" },
+		},
+		-- Optional, for file mentions and commands completion, pick only one
+		"saghen/blink.cmp",
+		-- 'hrsh7th/nvim-cmp',
 
-    -- Enable autoread for reload
-    vim.o.autoread = true
-  end,
+		-- Optional, for file mentions picker, pick only one
+		"folke/snacks.nvim",
+		-- 'nvim-telescope/telescope.nvim',
+		-- 'ibhagwan/fzf-lua',
+		-- 'nvim_mini/mini.nvim',
+	},
 }
